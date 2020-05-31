@@ -15,7 +15,7 @@ export class User extends Component {
             ?&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
             &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
         ).then((res) => {
-            this.setState({ is_loading: false, ...res.data })
+            this.setState({ is_loading: false, data: { ...res.data } })
         }).catch((error) => {
             // console.log(error);
             // alert(JSON.stringify(error, null, 2));
@@ -33,7 +33,8 @@ export class User extends Component {
 
         return (
             <>
-                <div>{this.state.name}</div>
+                {this.state.data.hireable && <span>Hey, you can hire this person!</span>}
+                <div>{this.state.data.name}</div>
                 <Link to='/' className="btn btn-light">
                     Back to search
                 </Link>
