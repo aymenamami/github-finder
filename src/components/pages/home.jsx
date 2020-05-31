@@ -12,12 +12,15 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    this.setState({ is_loading: true });
-    const users = this.searchUsers();
-    this.setState({ users: users, is_loading: false });
+    // search without any query will give all users
+    this.searchUsers();
   }
 
-  searchUsers = async query => {
+  // clear users from state
+  clearUsers = () => this.setState({ users: [] });
+
+  searchUsers = query => {
+    this.setState({ is_loading: true });
     if (query) {
       Github.get(
         `search/users?q=${query}
@@ -25,8 +28,7 @@ class Home extends Component {
         &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
       )
         .then((res) => {
-          console.log('inside query');
-          console.log(res);
+            this.setState({is_loading: false, users: res.data.items})
         })
         .catch((error) => {
           // console.log(error);
@@ -39,8 +41,7 @@ class Home extends Component {
         &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
       )
         .then((res) => {
-          console.log('no query');
-          console.log(res);
+            this.setState({is_loading: false, users: res.data})
         })
         .catch((error) => {
           // console.log(error);
@@ -53,10 +54,9 @@ class Home extends Component {
     return (
       <>
         <Search
-          searchUsers={this.props.searchUsers}
-          clearUsers={this.props.clearUsers}
-          showClear={false}
-          setAlert={this.props.setAlert}
+          searchUsers={this.searchUsers}
+          clearUsers={this.clearUsers}
+          showClear={this.state.users.length > 0 ? true : false}
         />
         <Users loading={this.state.is_loading} users={this.state.users} />
       </>
