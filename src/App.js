@@ -6,27 +6,22 @@ import Home from './components/pages/home';
 import User from './components/users/User';
 import './App.css';
 class App extends Component {
-  state = {
-    user: {},
-    loading: false,
-  };
-
-  render() {
-    return (
-      <Router>
-        <div className='App'>
-          <Navbar />
-          <div className='container'>
-            <Switch>
-              <Route exact path='/' component={() => <Home/>}/>
-              <Route exact path='/about' component={About} />
-              <Route exact path='/user/:login' component={User}/>
-            </Switch>
-          </div>
-        </div>
-      </Router>
-    );
-  }
+    render() {
+        return (
+            <Router>
+                <div className='App'>
+                    <Navbar />
+                    <div className='container'>
+                        <Switch>
+                            <Route exact path='/' component={Home} />
+                            <Route exact path='/about' component={About} />
+                            <Route exact path='/user/:login' component={User} />
+                        </Switch>
+                    </div>
+                </div>
+            </Router>
+        );
+    }
 }
 
 export default App;
