@@ -38,6 +38,66 @@ export class User extends Component {
                 <Link to='/' className="btn btn-light">
                     Back to search
                 </Link>
+            <b> Hireable {''} </b>
+                {this.state.data.hireable ? (<i className='fas fa-check text-success'/>)
+                 : (<i className='fas fa-times-circle text-danger'/>) }
+                
+                <div className='card grid-2'>
+                <div className='all-center'>
+                    <img 
+                        src={this.state.data.avatar_url}
+                        className='round-img'
+                        alt=''
+                        style={{ width: '150px' }}
+                    />
+                       <h1> { this.state.data.name } </h1>  
+                       <p> Location : {this.state.data.location} </p>
+                    </div>
+                    <div>
+                        { this.state.data.bio && (
+                            <>
+                            <h3> Bio</h3>
+                            <p> { this.state.data.bio } </p>
+                            </>
+                        )}
+                        <a href={this.state.data.html_url} className="btn btn-dark my-1" 
+                        target="_blank" > 
+                        Visit GitHub Profile
+                         </a> 
+                    </div>
+                    <url>
+                        <li>
+                            { this.state.data.login && (
+                                <>
+                                    <strong> Username: </strong>{this.state.data.login}
+                                </>
+                            ) }
+                        </li>
+                        <li>
+                            { this.state.data.blog && (
+                                <>
+                                    <strong> Website: </strong>{this.state.data.blog}
+                                </>
+                            ) }
+                        </li>
+                        <li>
+                            { this.state.data.company && (
+                                <>
+                                    <strong> Company: </strong>{this.state.data.Company}
+                                </>
+                            ) }
+                        </li>
+                        
+
+                    </url>
+                </div>
+                <div className="card text-center" >
+                <div className="badge badge-primary"> Followers:{this.state.data.followers} </div>
+                <div className="badge badge-success"> Following:{this.state.data.following} </div>
+                <div className="badge badge-light"> Public Repos:{this.state.data.public_repos} </div>
+                <div className="badge badge-dark"> Public Gists:{this.state.data.public_gists} </div>
+           
+                </div>           
             </>
         );
     }
