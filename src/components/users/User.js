@@ -65,7 +65,7 @@ export class User extends Component {
                         Visit GitHub Profile
                          </a> 
                     </div>
-                    <url>
+                    <ul>
                         <li>
                             { this.state.data.login && (
                                 <>
@@ -89,7 +89,7 @@ export class User extends Component {
                         </li>
                         
 
-                    </url>
+                    </ul>
                 </div>
                 <div className="card text-center" >
                 <div className="badge badge-primary"> Followers:{this.state.data.followers} </div>
