@@ -33,8 +33,6 @@ export class User extends Component {
 
         return (
             <>
-                {this.state.data.hireable && <span>Hey, you can hire this person!</span>}
-                <div>{this.state.data.name}</div>
                 <Link to='/' className="btn btn-light">
                     Back to search
                 </Link>
