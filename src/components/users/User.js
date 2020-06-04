@@ -61,7 +61,7 @@ export class User extends Component {
                             </>
                         )}
                         <a href={this.state.data.html_url} className="btn btn-dark my-1" 
-                        target="_blank" > 
+                        target="_blank" rel="noopener noreferrer"> 
                         Visit GitHub Profile
                          </a> 
                     </div>
