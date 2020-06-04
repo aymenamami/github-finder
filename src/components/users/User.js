@@ -83,7 +83,7 @@ export class User extends Component {
                         <li>
                             { this.state.data.company && (
                                 <>
-                                    <strong> Company: </strong>{this.state.data.Company}
+                                    <strong> Company: </strong>{this.state.data.company}
                                 </>
                             ) }
                         </li>
