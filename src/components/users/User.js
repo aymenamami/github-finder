@@ -33,8 +33,6 @@ export class User extends Component {
 
         return (
             <>
-                {this.state.data.hireable && <span>Hey, you can hire this person!</span>}
-                <div>{this.state.data.name}</div>
                 <Link to='/' className="btn btn-light">
                     Back to search
                 </Link>
@@ -61,11 +59,11 @@ export class User extends Component {
                             </>
                         )}
                         <a href={this.state.data.html_url} className="btn btn-dark my-1" 
-                        target="_blank" > 
+                        target="_blank" rel="noopener noreferrer"> 
                         Visit GitHub Profile
                          </a> 
                     </div>
-                    <url>
+                    <ul>
                         <li>
                             { this.state.data.login && (
                                 <>
@@ -83,13 +81,13 @@ export class User extends Component {
                         <li>
                             { this.state.data.company && (
                                 <>
-                                    <strong> Company: </strong>{this.state.data.Company}
+                                    <strong> Company: </strong>{this.state.data.company}
                                 </>
                             ) }
                         </li>
                         
 
-                    </url>
+                    </ul>
                 </div>
                 <div className="card text-center" >
                 <div className="badge badge-primary"> Followers:{this.state.data.followers} </div>
